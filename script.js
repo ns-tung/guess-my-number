@@ -7,17 +7,23 @@ const guessEl = document.querySelector('.guess');
 const checkEl = document.querySelector('.check');
 const againEl = document.querySelector('.again');
 const highScoreEl = document.querySelector('.highscore');
+const bodyEl = document.querySelector('body');
 
 let score = 20;
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 checkEl.addEventListener('click', function () {
+
   const guessNumber = Number(guessEl.value);
-  if (!guessNumber) {
+
+  if (!guessNumber) { // When there is no input
     messageEl.textContent = '🧐 Hmmm, no number!';
-  } else if (guessNumber === secretNumber) {
+  } else if (guessNumber === secretNumber) { // When player wins
     messageEl.textContent = '🥳 Correct Number!';
-  } else if (guessNumber > secretNumber) {
+    bodyEl.style.backgroundColor = '#1ca000';
+    numberEl.textContent = guessNumber;
+    numberEl.style.width = '30rem';
+  } else if (guessNumber > secretNumber) { // When guess is too high
     if (score > 1) {
       score--;
       scoreEl.textContent = score;
@@ -26,7 +32,7 @@ checkEl.addEventListener('click', function () {
       scoreEl.textContent = score = 0;
       messageEl.textContent = '🤯 GAME OVER!'
     }
-  } else if (guessNumber < secretNumber) {
+  } else if (guessNumber < secretNumber) { // When guess is too low
     if (score > 1) {
       score--;
       scoreEl.textContent = score;
