@@ -10,6 +10,7 @@ const highScoreEl = document.querySelector('.highscore');
 const bodyEl = document.querySelector('body');
 
 let score = 20;
+let highScore = 0;
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 checkEl.addEventListener('click', function () {
@@ -23,6 +24,9 @@ checkEl.addEventListener('click', function () {
     bodyEl.style.backgroundColor = '#1ca000';
     numberEl.textContent = secretNumber;
     numberEl.style.width = '30rem';
+    if (score > highScore) {
+      highScoreEl.textContent = highScore = score;
+    }
   } else if (guessNumber > secretNumber) { // When guess is too high
     if (score > 1) {
       score--;
