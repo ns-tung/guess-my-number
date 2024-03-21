@@ -11,49 +11,49 @@ const bodyEl = document.querySelector('body');
 
 let score = 20;
 let highScore = 0;
-let secretNumber = Math.trunc(Math.random() * 20) + 1;
+const randomNumber = function () { return Math.trunc(Math.random() * 20) + 1 };
+
+let secretNumber = randomNumber();
+
+const displayText = function (selector, message) {
+  selector.textContent = message;
+}
 
 checkEl.addEventListener('click', function () {
 
   const guessNumber = Number(guessEl.value);
 
   if (!guessNumber) { // When there is no input
-    messageEl.textContent = '🧐 Hmmm, no number!';
+    displayText(messageEl, '🧐 Hmmm, no number!');
   } else if (guessNumber === secretNumber) { // When player wins
-    messageEl.textContent = '🥳 Correct Number!';
+    displayText(messageEl, '🥳 Correct Number!');
     bodyEl.style.backgroundColor = '#1ca000';
-    numberEl.textContent = secretNumber;
+    displayText(numberEl, secretNumber);
     numberEl.style.width = '30rem';
     if (score > highScore) {
-      highScoreEl.textContent = highScore = score;
+      highScore = score;
+      displayText(highScoreEl, highScore);
     }
-  } else if (guessNumber > secretNumber) { // When guess is too high
+  } else if (guessNumber !== secretNumber) { // When guess is wrong
     if (score > 1) {
       score--;
-      scoreEl.textContent = score;
-      messageEl.textContent = '📈 Too hight!';
+      displayText(scoreEl, score);
+      displayText(messageEl, guessNumber > secretNumber ? '📈 Too hight!' : '📉 Too low!');
     } else {
-      scoreEl.textContent = score = 0;
-      messageEl.textContent = '🤯 GAME OVER!'
-    }
-  } else if (guessNumber < secretNumber) { // When guess is too low
-    if (score > 1) {
-      score--;
-      scoreEl.textContent = score;
-      messageEl.textContent = '📉 Too low!';
-    } else {
-      scoreEl.textContent = score = 0;
-      messageEl.textContent = '🤯 GAME OVER!'
+      score = 0;
+      displayText(scoreEl, score);
+      displayText(messageEl, '🤯 GAME OVER!');
     }
   }
 })
 
 againEl.addEventListener('click', function () {
-  scoreEl.textContent = score = 20;
-  secretNumber = Math.trunc(Math.random() * 20) + 1;
-  messageEl.textContent = 'Start guessing ...';
+  score = 20;
   guessEl.value = '';
-  numberEl.textContent = '?';
+  secretNumber = randomNumber();
+  displayText(numberEl, '?');
+  displayText(scoreEl, score);
+  displayText(messageEl, '😀 Start guessing...');
   numberEl.style.width = '15rem';
-  bodyEl.style = '#123456';
+  bodyEl.style.backgroundColor = '#123456';
 })

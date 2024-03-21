@@ -25,7 +25,7 @@ body {
 header {
   position: relative;
   height: 35vh;
-  border-bottom: 7px solid #eee;
+  border-bottom: 8px solid #eee;
 }
 
 main {
@@ -69,20 +69,20 @@ h1 {
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, 55%);
 }
 
 .between {
   font-size: 1.4rem;
   position: absolute;
   top: 2rem;
-  right: 2rem;
+  left: 2rem;
 }
 
 .again {
   position: absolute;
   top: 2rem;
-  left: 2rem;
+  right: 2rem;
 }
 
 .guess {
