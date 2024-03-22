@@ -104,7 +104,7 @@ h1 {
   color: #222;
   font-size: 2rem;
   font-family: inherit;
-  padding: 2rem 3rem;
+  padding: 2rem 2.2rem 2rem 3rem;
   cursor: pointer;
 }
 
@@ -119,4 +119,21 @@ h1 {
 
 .label-score {
   margin-bottom: 2rem;
+}
+
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.github {
+  margin-left: 2rem;
+}
+
+.netlify {
+  margin-right: 2rem;
 }

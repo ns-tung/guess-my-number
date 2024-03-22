@@ -26,10 +26,11 @@ checkEl.addEventListener('click', function () {
   if (!guessNumber) { // When there is no input
     displayText(messageEl, '🧐 Hmmm, no number!');
   } else if (guessNumber === secretNumber) { // When player wins
-    displayText(messageEl, '🥳 Correct Number!');
-    bodyEl.style.backgroundColor = '#1ca000';
+    guessEl.setAttribute('disabled', '');
     displayText(numberEl, secretNumber);
+    displayText(messageEl, '🥳 Correct Number!');
     numberEl.style.width = '30rem';
+    bodyEl.style.backgroundColor = '#1ca000';
     if (score > highScore) {
       highScore = score;
       displayText(highScoreEl, highScore);
@@ -38,10 +39,14 @@ checkEl.addEventListener('click', function () {
     if (score > 1) {
       score--;
       displayText(scoreEl, score);
-      displayText(messageEl, guessNumber > secretNumber ? '📈 Too hight!' : '📉 Too low!');
+      displayText(messageEl, guessNumber < secretNumber ? `📈 Bigger than ${guessNumber}` : `📉 Smaller than ${guessNumber}`);
     } else {
       score = 0;
       displayText(scoreEl, score);
+      numberEl.style.width = '30rem';
+      displayText(numberEl, secretNumber);
+      guessEl.setAttribute('disabled', '');
+      bodyEl.style.backgroundColor = '#111';
       displayText(messageEl, '🤯 GAME OVER!');
     }
   }
@@ -50,10 +55,11 @@ checkEl.addEventListener('click', function () {
 againEl.addEventListener('click', function () {
   score = 20;
   guessEl.value = '';
-  secretNumber = randomNumber();
   displayText(numberEl, '?');
   displayText(scoreEl, score);
+  secretNumber = randomNumber();
+  bodyEl.removeAttribute('style');
+  numberEl.removeAttribute('style');
+  guessEl.removeAttribute('disabled');
   displayText(messageEl, '😀 Start guessing...');
-  numberEl.style.width = '15rem';
-  bodyEl.style.backgroundColor = '#123456';
 })
