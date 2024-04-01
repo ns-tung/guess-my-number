@@ -11,40 +11,39 @@
     <meta property="og:title" content="Guess My Number – Tung Nguyen" />
     <meta
       property="og:description"
-      content="A captivating JavaScript game that challenges your intuition and deductive skills. With a classic pixel art design, you'll embark on a quest to guess a random number between 1 and 20. Each guess earns you hints, but be careful - incorrect guesses deduct points from your starting score of 20. Can you crack the code and achieve the highest score? Test your luck and logic now!"
+      content="A captivating JavaScript game that challenges your intuition and deductive skills. With a classic pixel art design, you must guess a random number between 1 and 100. Each guess earns a hint, but be careful – incorrect guesses deduct 1 point from the 100 starting score. Can you crack the code and achieve the highest score? Test your luck and logic now!"
     />
     <meta property="og:url" content="https://gmn-tungns.netlify.app" />
     <meta property="og:image" content="/guess-my-number.png" />
     <meta property="og:image:alt" content="Guess My Number" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔢</text></svg>"
-    />
+    <link rel="shortcut icon" href="/mona.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
-      <h1>Guess My Number!</h1>
-      <p class="between">(Between 1 and 20)</p>
+      <h1 class="glitch" data-text="Guess My Number!">Guess My Number!</h1>
+      <p class="between">(Between 1 and 100)</p>
       <button class="btn again">Again!</button>
-      <div class="number">?</div>
+      <div class="number">
+        <!-- 👾 -->
+        <img src="/mona.gif" width="60" alt="?" />
+      </div>
     </header>
     <main>
       <section class="left">
-        <input type="number" class="guess" min="1" max="20" />
+        <input type="number" class="guess" min="1" max="100" />
         <button class="btn check">Check!</button>
       </section>
       <section class="right">
         <p class="message">😀 Start guessing...</p>
-        <p class="label-score">💯 Score: <span class="score">20</span></p>
+        <p class="label-score">💯 Score: <span class="score">100</span></p>
         <p class="label-highscore">
           🥇 High-score: <span class="highscore">0</span>
         </p>
       </section>
       <section class="footer">
         <a
-          class="github"
           href="https://github.com/ns-tung/guess-my-number"
           target="_blank"
           title="Github repository"
@@ -55,22 +54,28 @@
             viewBox="0 0 16 16"
             version="1.1"
             width="32"
-            fill="#eee"
+            fill="#ffffff"
           >
             <path
               d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"
             ></path>
           </svg>
         </a>
-        <a class="netlify" href="https://www.netlify.com" target="_blank">
-          <img
-            class="img-netlify"
-            src="https://www.netlify.com/v3/img/components/netlify-color-accent.svg"
-            alt="Deploys by Netlify"
-          />
-        </a>
+        <a class="rules">?</a>
       </section>
     </main>
+    <div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <h2><span>👾</span>Rule</h2>
+      <ul>
+        <li>• You will quest to guess a random number between 1 and 100.</li>
+        <li>
+          • Each guess earns a hint, but be careful – each incorrect guesses
+          deduct 1 point from the 100 starting score.
+        </li>
+      </ul>
+    </div>
+    <div class="overlay hidden"></div>
     <script src="script.js"></script>
   </body>
 </html>

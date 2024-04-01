@@ -1,6 +1,6 @@
 # Guess My Number
 
-In a simple JavaScript game with a classic pixel art design, you'll embark on a quest to guess a random number between 1 and 20. Each guess earns you hints, but be careful - incorrect guesses deduct points from your starting score of 20.
+In a simple JavaScript game with a classic pixel art design, you'll embark on a quest to guess a random number between 1 and 100. Each guess earns a hint, but be careful – each incorrect guess deducts 1 point from the 100 starting score.
 
 Can you crack the code and achieve the highest score? Test your luck and logic now! 😀
 
